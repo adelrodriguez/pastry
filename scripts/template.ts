@@ -1,5 +1,13 @@
 import Bun from "bun"
-import { cancel, intro, isCancel, text } from "@clack/prompts"
+import {
+  cancel,
+  intro,
+  isCancel,
+  log,
+  outro,
+  spinner,
+  text,
+} from "@clack/prompts"
 import yargs from "yargs"
 import { hideBin } from "yargs/helpers"
 import { defineCommand } from "./utils"
@@ -67,6 +75,10 @@ const init = defineCommand({
       return
     }
 
+    const s = spinner()
+
+    s.start("Updating package.json...")
+
     await Bun.file("package.json")
       .text()
       .then((value) => value.replaceAll(TEMPLATE_NAME, name))
@@ -74,6 +86,40 @@ const init = defineCommand({
       .then((value) => value.replaceAll(TEMPLATE_GITHUB_USER, githubUser))
       .then((value) => value.replaceAll(TEMPLATE_DESCRIPTION, description))
       .then((updated) => Bun.write("package.json", updated))
+
+    s.stop("Package.json updated")
+
+    s.start("Updating README.md...")
+
+    const readme = `
+<div align="center">
+  <h1 align="center">${name}</h1>
+
+  <p align="center">
+    <strong>${description}</strong>
+  </p>
+</div>
+
+Made with [🥐 \`pastry\`](https://github.com/adelrodriguez/pastry)
+    `
+
+    await Bun.write("README.md", readme)
+
+    s.stop("README.md updated")
+
+    s.start("Remove template documentation...")
+
+    const exists = await Bun.file("./docs").exists()
+
+    if (exists) {
+      await Bun.$`rm -rf ./docs`
+    }
+
+    s.stop("Template documentation removed")
+
+    log.success("✨ Project initialized successfully")
+
+    outro("Get to cooking! 🥐")
   },
 })
 
