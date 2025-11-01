@@ -107,15 +107,14 @@ Made with [🥐 \`pastry\`](https://github.com/adelrodriguez/pastry)
 
     s.stop("README.md updated")
 
-    s.start("Remove template documentation...")
+    s.start("Remove template files...")
 
-    const exists = await Bun.file("./docs").exists()
+    await Bun.$`rm -rf ./docs`
+    s.message("docs removed")
+    await Bun.$`rm -rf ./CHANGELOG.md`
+    s.message("CHANGELOG.md removed")
 
-    if (exists) {
-      await Bun.$`rm -rf ./docs`
-    }
-
-    s.stop("Template documentation removed")
+    s.stop("Template files removed")
 
     log.success("✨ Project initialized successfully")
 
