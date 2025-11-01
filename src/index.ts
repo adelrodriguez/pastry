@@ -1,1 +1,3 @@
-console.log("Let's bake some pastry!")
+export function main() {
+  return "Let's bake some pastry! 🥐"
+}
