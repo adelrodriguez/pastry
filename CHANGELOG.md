@@ -1,5 +1,15 @@
 # pastry
 
+## 0.1.1
+
+### Patch Changes
+
+- 2360f33: Improve template initialization and documentation structure
+
+  - Restructure CLAUDE.md with clear sections for Agents and Bun usage instructions
+  - Enhance template script to remove CHANGELOG.md along with docs directory during initialization
+  - Improve user feedback messages during template cleanup process
+
 ## 0.1.0
 
 ### Minor Changes
