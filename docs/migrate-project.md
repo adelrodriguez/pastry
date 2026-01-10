@@ -262,7 +262,7 @@ src/                    # Or keep library in root
 Edit `bunup.config.ts` to match your library's needs:
 
 ```typescript
-import { defineBunupConfig } from "bunup";
+import { defineBunupConfig } from "bunup"
 
 export default defineBunupConfig({
   entry: "src/index.ts", // Update if your entry point differs
@@ -275,7 +275,7 @@ export default defineBunupConfig({
   runtime: "node", // or "browser" for browser libraries
   // Optional: Add external dependencies
   external: ["react", "react-dom"], // Don't bundle these
-});
+})
 ```
 
 **Common adjustments:**
@@ -291,25 +291,25 @@ Convert your existing tests to Bun's test format:
 **Before (Jest/Vitest):**
 
 ```typescript
-import { describe, it, expect } from "vitest";
+import { describe, it, expect } from "vitest"
 
 describe("myFunction", () => {
   it("should return true", () => {
-    expect(myFunction()).toBe(true);
-  });
-});
+    expect(myFunction()).toBe(true)
+  })
+})
 ```
 
 **After (Bun):**
 
 ```typescript
-import { describe, test, expect } from "bun:test";
+import { describe, test, expect } from "bun:test"
 
 describe("myFunction", () => {
   test("should return true", () => {
-    expect(myFunction()).toBe(true);
-  });
-});
+    expect(myFunction()).toBe(true)
+  })
+})
 ```
 
 **Key changes:**
@@ -444,7 +444,7 @@ EOF
   "private": true,
   "workspaces": ["packages/*"],
   "scripts": {
-    "template": "bun run packages/template/scripts/template.ts",
+    "init": "bun run packages/template/scripts/init.ts",
     "build:all": "bun run --filter '*' build"
   }
 }
