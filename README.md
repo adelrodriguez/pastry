@@ -13,7 +13,7 @@
 - **[Adamantite](https://github.com/adelrodriguez/adamantite)** - Code quality tool powered by Biome for linting, formatting and type checking.
 - **[Changesets](https://github.com/changesets/changesets)** - Versioning and changelog management.
 - **GitHub Actions** - CI workflow for linting, type checking, and testing; automated release workflow.
-- **Template script** - Interactive CLI to scaffold new projects from this template.
+- **Init script** - Interactive setup via `bun run init`.
 
 ## Documentation
 
