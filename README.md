@@ -10,7 +10,7 @@
 
 - **[Bun](https://bun.sh)** - For running the project, scripts and tests.
 - **[Bunup](https://github.com/bunup/bunup)** - Build tool for built on Bun's native bundler with great DX.
-- **[Adamantite](https://github.com/adelrodriguez/adamantite)** - Code quality tool powered by Biome for linting, formatting and type checking.
+- **[Adamantite](https://github.com/adelrodriguez/adamantite)** - Code quality tool for linting, formatting and type checking.
 - **[Changesets](https://github.com/changesets/changesets)** - Versioning and changelog management.
 - **GitHub Actions** - CI workflow for linting, type checking, and testing; automated release workflow.
 - **Init script** - Interactive setup via `bun run init`.
