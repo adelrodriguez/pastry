@@ -73,7 +73,10 @@ packageContents = replaceAllText(packageContents, TEMPLATE_AUTHOR, author)
 packageContents = replaceAllText(packageContents, TEMPLATE_GITHUB_USER, githubUser)
 packageContents = replaceAllText(packageContents, TEMPLATE_DESCRIPTION, description)
 
-await Bun.write("package.json", packageContents)
+const packageJson = JSON.parse(packageContents)
+packageJson.version = "0.0.0"
+
+await Bun.write("package.json", `${JSON.stringify(packageJson, null, 2)}\n`)
 
 s.stop("Package.json updated")
 
