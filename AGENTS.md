@@ -1,20 +1,23 @@
 # AGENTS.md
 
-This project was built with [`pastry`](https://github.com/adelrodriguez/pastry) template.
+Use ASD-STE100 Simplified Technical English for all communication.
 
-## Quality Control
+Before you explore or change code, read the relevant `CONTEXT.md` files. Use the
+ubiquitous language in these files.
 
-- We use `adamantite` for linting, formatting and type checking.
-- Always run `bun run format` after editing files.
-- After making changes, run `bun run check`, `bun run typecheck` and `bun run test` to ensure the code is still valid.
-- After installing or removing dependencies, run `bun run analyze` to ensure we are not using any dependencies that are not needed.
+## Agent skills
 
-## Changesets
+### Issue tracker
 
-- We use `changesets` for versioning and changelog management.
-- Run `bun changeset --empty` to create a new empty changeset file.
-- Never make a major version bump unless the user requests it.
-- If a breaking change is being made, and we are on v1.0.0 or higher, alert the user.
+Issues and PRDs are tracked as GitHub issues at `adelrodriguez/pastry`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the default five-role triage vocabulary. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Use the single-context domain-doc layout. See `docs/agents/domain.md`.
 
 <!-- ADAMANTITE:START -->
 
