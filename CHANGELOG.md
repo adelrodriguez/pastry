@@ -1,5 +1,24 @@
 # pastry
 
+## 0.3.0
+
+### Minor Changes
+
+- 1ebadc0: Migrate oxlint config to TypeScript (`oxlint.config.ts`) and update tooling defaults
+
+  - **Breaking config change**: `.oxlintrc.json` replaced with `oxlint.config.ts`. If you've customized the JSON config, migrate your rules to the new TypeScript format.
+  - **Oxfmt**: `experimentalSortImports` renamed to `sortImports`, `experimentalTailwindcss` renamed to `sortTailwindcss` (following upstream stabilization in oxfmt 0.35).
+  - **CI**: Node.js 24 now set up explicitly; pinned Bun version removed.
+  - **Editor**: Added `.zed/settings.json` with oxfmt and oxlint LSP integration.
+  - **Dependencies**: adamantite 0.30 (effect v4 beta), oxfmt 0.35, oxlint 1.50, TypeScript pinned to 5.9.3.
+
+- 1d413eb: Overhaul the `bun run init` script and rewrite the README
+
+  - **Init script**: writes `package.json` fields structurally instead of string replacement — sets `name`, `description`, `author`, `homepage`, `bugs`, and `repository` (handles scoped package names correctly), and updates the copyright line in `LICENSE`.
+  - **Init script**: removes more template-only material on setup — the docs, pending changesets (keeps `.changeset/README.md`), the `scripts` directory and its `init` entry in `package.json`, and the `@clack/prompts` devDependency. Also rewrites `knip.config.ts` and `tsconfig.json` so the generated package has no leftover `scripts/` references, and empties `CONTEXT.md`.
+  - **README**: rewritten with step-by-step template usage, development commands, release instructions, and a note on configuring npm trusted publishing.
+  - **Dependabot**: added `.github/dependabot.yml` with weekly grouped updates for Bun dependencies and GitHub Actions.
+
 ## 0.2.2
 
 ### Patch Changes
@@ -25,23 +44,27 @@
 - 35f902d: Migrate from Biome to oxc-based tooling stack
 
   **Breaking Changes:**
+
   - Removed `@biomejs/biome` dependency and `biome.jsonc` configuration
   - Replaced with oxc tools: `oxlint`, `oxfmt`, and `oxlint-tsgolint`
   - VS Code formatter changed from Biome to oxc extension
   - TypeScript peer dependency updated to `^5.9.3`
 
   **Tooling Updates:**
+
   - Upgraded `adamantite` from v0.13 to v0.25 with new oxc-based architecture
   - Added `knip` for dependency analysis
   - New config files: `.oxfmtrc.jsonc`, `.oxlintrc.json`
   - Updated CI workflow: `adamantite.yml` with format, check, typecheck, analyze jobs
 
   **Template Changes:**
+
   - Simplified init script by removing yargs CLI wrapper - use `bun run init` directly
   - New `AGENTS.md` for AI coding assistant guidelines
   - Removed `.claude/agents/`, `.cursor/rules/`, and `CLAUDE.md`
 
   **Migration for existing template users:**
+
   1. Remove `@biomejs/biome` and `biome.jsonc`
   2. Install new dependencies: `bun add -d oxlint oxfmt oxlint-tsgolint adamantite@latest knip`
   3. Copy `.oxfmtrc.jsonc` and `.oxlintrc.json` from template
@@ -64,6 +87,7 @@
   This release introduces two major features that significantly improve the developer experience when working with the Pastry template:
 
   **Interactive Template CLI** (d3b12c5)
+
   - Added `bun run template init` command that provides an interactive CLI for scaffolding new projects
   - Prompts users for project name, author, GitHub username, and description
   - Automatically updates package.json, README.md, and removes template documentation
@@ -71,6 +95,7 @@
   - Includes proper error handling and validation for user inputs
 
   **Comprehensive Documentation** (870d134)
+
   - Added detailed migration guide (`docs/migrate-project.md`) with 594 lines of documentation covering:
     - Three different git merge strategies for preserving project history
     - Step-by-step post-migration instructions for package.json, source code organization, configuration reconciliation, and dependency updates
@@ -80,6 +105,7 @@
   - Improved template script with better user feedback and file cleanup
 
   **Claude Code Agent for Changesets**
+
   - Added a specialized `changeset-writer` agent (`.claude/agents/changeset-writer.md`) for automating changelog generation
   - Analyzes git diffs and generates appropriate changeset entries following semantic versioning principles
   - Provides intelligent version bump recommendations (major/minor/patch) based on change impact
