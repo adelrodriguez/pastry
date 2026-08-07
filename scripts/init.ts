@@ -12,7 +12,7 @@ const name = await text({
   message: "What is the name of the project?",
   placeholder: TEMPLATE_NAME,
   validate: (value) => {
-    if (value.length === 0) {
+    if (!value) {
       return "Project name is required"
     }
   },
@@ -49,7 +49,7 @@ const description = await text({
   message: "What is the description of the project?",
   placeholder: TEMPLATE_DESCRIPTION,
   validate: (value) => {
-    if (value.length === 0) {
+    if (!value) {
       return "Description is required"
     }
   },
