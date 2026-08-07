@@ -7,9 +7,12 @@
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
+    "allowImportingTsExtensions": true,
     "moduleResolution": "bundler",
-    "verbatimModuleSyntax": true
+    "noEmit": true,
+    "verbatimModuleSyntax": true,
+    "types": ["bun"]
   },
-  "include": ["src/**/*.ts", "*.config.ts"],
+  "include": ["src", "scripts", "*.config.ts"],
   "exclude": ["node_modules", "dist"]
 }
