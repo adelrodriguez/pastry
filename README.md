@@ -6,6 +6,9 @@
   </p>
 </div>
 
+> [!IMPORTANT]
+> Pastry is archived. Start new libraries from [keel](https://github.com/adelrodriguez/keel), which uses pnpm, tsdown, Adamantite, and Packref.
+
 Pastry is a simple template for open-source packages that use Bun.
 
 ## Use the template
